@@ -51,7 +51,7 @@ int main(){
 
     int n = atoi(n_str.c_str());
 
-    string image_data[n];
+    vector<string> image_data(n);
 
     for(int i=0; i<n; i++)
         getline(fin, image_data[i]);
@@ -59,7 +59,8 @@ int main(){
     const int k = findInterestFactor(image_data[0], image_data[3]);
     cout << k << endl;
 
-    string slideshow[n];
+    vector<string> slideshow;
+
 
 
     return 0;
