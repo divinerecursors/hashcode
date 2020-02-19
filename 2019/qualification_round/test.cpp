@@ -19,6 +19,7 @@ vector<string> split(const string& s, char delimiter) {
 int main(){
 
     vector<string> f = split("My name is Junaid", ' ');
+    f.erase(f.begin(), f.begin()+2);
 
     for(string k: f)
         cout << k << endl;
