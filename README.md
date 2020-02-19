@@ -1,0 +1,2 @@
+# hashcode
+google hashcode resources
