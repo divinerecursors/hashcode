@@ -32,7 +32,9 @@ vector<string> readFile(string filename){
 }
 
 typedef struct LIB_S {
-    int n; // number of books
+    int index; //original index of library obtained from input
+    int n; // no of books in lib
+    int m; // the number of books that can be shipped from library
     int t; // the number of days it takes to finish the library signup process
     vector<vector<int>> id_and_scores; //list of (id, scores)
 } library;
@@ -71,8 +73,10 @@ int main(){
         vector<string> first_line = split(file_data[j], ' ');
         vector<string> second_line = split(file_data[j+1], ' ');
 
+        library_structure[i].index = i;
         library_structure[i].n = atoi(first_line[0].c_str());
         library_structure[i].t = atoi(first_line[1].c_str());
+        library_structure[i].m = atoi(first_line[2].c_str());
 
         for(string book: second_line){
             vector<int> k;
@@ -99,7 +103,55 @@ int main(){
     // for(auto k: library_structure[0].id_and_scores)
     //     cout << k[0] << ' ' << k[1] << endl;
 
-    while()
+    int n=0;
+    
+
+    for(int i=0;i<no_of_libs;i++)
+    {
+        if(n<days)
+        {
+            n=n+library_structure[i].t;
+        }
+        else
+        {
+            break;
+        }
+        
+    }
+
+    int sum=0;
+    cout<<n<<endl;
+
+    for(int i=0;i<n;i++)
+    {
+        sum=sum+library_structure[i].t;
+
+        for(int j=0;j<(days-sum);j++) {   
+            cout << library_structure[i].index <<' ';
+
+            if (library_structure[i].n>((days-sum)*library_structure[i].m) ){
+                cout<<(days-sum)*library_structure[i].m<<endl;
+                for(int k=0;k<(days-sum)*library_structure[i].m;k++)
+                {
+                    cout << library_structure[i].id_and_scores[k][0]<<' ';
+                }
+                cout<<endl;
+            }
+            else
+            {
+                cout<<library_structure[i].n << ' ';
+                for(auto k: library_structure[i].id_and_scores)
+                    cout << k[0] << ' ';
+                cout<<endl;
+                /* code */
+            }
+            
+        }
+    }
+
+    
+  
+
 
     return 0;
 }
