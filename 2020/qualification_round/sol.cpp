@@ -1,8 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <sstream>
+#include<bits/stdc++.h>
 
 
 using namespace std;
@@ -42,9 +38,17 @@ typedef struct LIB_S {
 } library;
 
 
+bool ascend(const library& p1, const library& p2) {
+    return p1.t < p2.t;
+}
+
+bool descend(const vector<int>& p1, vector<int>& p2) {
+    return p1[1] > p2[1];
+}
+
 
 int main(){
-    string filename = "input_data/f_libraries_of_the_world.txt";
+    string filename = "input_data/a_example.txt";
 
     vector<string> file_data = readFile(filename);
     vector<string> scores_string_arr = split(file_data[1], ' ');
@@ -79,7 +83,15 @@ int main(){
 
     }
 
-    sort
+    sort(library_structure,library_structure+no_of_libs,ascend);
+
+    for(int i=0;i<no_of_libs;i++)
+    {
+        sort(library_structure[i].id_and_scores.begin(),library_structure[i].id_and_scores.end(),descend);
+    }
+    
+    
+
 
     // Code to print library_structure
     // cout << library_structure[0].n << ' ' << library_structure[0].m << endl;
@@ -87,7 +99,7 @@ int main(){
     // for(auto k: library_structure[0].id_and_scores)
     //     cout << k[0] << ' ' << k[1] << endl;
 
-    
+    while()
 
     return 0;
 }
