@@ -37,7 +37,7 @@ vector<string> readFile(string filename){
 
 typedef struct LIB_S {
     int n; // number of books
-    int m; // number of books the lib can ship in one day
+    int t; // the number of days it takes to finish the library signup process
     vector<vector<int>> id_and_scores; //list of (id, scores)
 } library;
 
@@ -68,7 +68,7 @@ int main(){
         vector<string> second_line = split(file_data[j+1], ' ');
 
         library_structure[i].n = atoi(first_line[0].c_str());
-        library_structure[i].m = atoi(first_line[2].c_str());
+        library_structure[i].t = atoi(first_line[1].c_str());
 
         for(string book: second_line){
             vector<int> k;
