@@ -54,7 +54,7 @@ bool descend(const vector<int64_t>& p1, vector<int64_t>& p2) {
 
 
 int main(){
-    string filename = "input_data/b_read_on.txt";
+    string filename = "c_incunabula.txt";
 
     vector<string> file_data = readFile(filename);
     vector<string> scores_string_arr = split(file_data[1], ' ');
